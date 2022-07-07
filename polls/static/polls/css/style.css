@@ -1,0 +1,112 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-left: 5%;
+    padding-right: 5%;
+    color:white;
+    background-color: #181818;
+    font-size: larger;
+}
+
+header {
+    color: orange;
+    text-align: center;
+    background-color: #212121;
+}
+
+.Content {
+    margin-left: 220px;
+}
+
+.Menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #212121;
+}
+
+.MenuElement {
+    margin: 10px;
+}
+
+.MenuElement:hover {
+    background-color: #303030;
+}
+
+.MenuLink, .QuestionLink {
+    padding: 10px;
+    display: block;
+    color: whitesmoke;
+    text-align: left;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.Navigation {
+    width: 200px;
+    position: absolute;
+}
+
+.Question {
+    text-align: left;
+    background-color: #212121;
+    border-top: 0px;
+    border-left: 2px;
+    border-right: 2px;
+    border-bottom: 2px;
+    border-style: solid;
+    border-color: black;
+    padding: 10px;
+}
+
+.QuestionLink:hover {
+    background-color: #303030;
+}
+
+.Question:first-child {
+    border-top: 2px;
+    border-left: 2px;
+    border-right: 2px;
+    border-bottom: 2px;
+    border-style: solid;
+    border-color: black;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.Question:last-child {
+    border-top: 0px;
+    border-left: 2px;
+    border-right: 2px;
+    border-bottom: 2px;
+    border-style: solid;
+    border-color: black;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.Table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    transition-duration: 2500ms;
+}
+
+.Table:hover {
+    background-color: red;
+    transform: rotate3d(1, 1, 0, 45deg);
+}
+
+.TableElement {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.TableRow:hover {
+    background-color: #303030;
+}
+
+.Title {
+    padding: 5px;
+}

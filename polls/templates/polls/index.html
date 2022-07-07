@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Polls</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="{% static 'polls/scripts/main.js' %}"></script>
+</head>
+
+<body>
+
+    {% include "./fragments/header.html" %}
+    {% include "./fragments/navigation.html" %}
+
+    <div class="Content">
+        {% if latest_question_list %}
+        <article>
+            {% for question in latest_question_list %}
+            <section class="Question">
+                <a class="QuestionLink" href="/polls/{{ question.id }}/">
+                    <span class="QuestionText">{{ question.question_text }}</span><br />
+                    <span class="QuestionDate">Date: {{ question.pub_date }}</span>
+                </a>
+            </section>
+            {% endfor %}
+        </article>
+        <article>
+            <table class="Table">
+                <tr>
+                    <th class="TableElement">
+                        Question Text
+                    </th>
+                    <th class="TableElement">
+                        Question Date
+                    </th>
+                </tr>
+                {% for question in latest_question_list %}
+                <tr class="TableRow" href="#test">
+                    <td class="TableElement">
+                        {{ question.question_text }}
+                    </td>
+                    <td  class="TableElement">
+                        {{ question.pub_date }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </article>
+        {% else %}
+        <p>No polls are available.</p>
+        {% endif %}
+        <p id="clock"></p>
+    </div>
+
+</body>
+
+</html>
