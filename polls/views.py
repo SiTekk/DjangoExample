@@ -7,7 +7,8 @@ from polls.models import Question, Choice
 
 
 def index(request):
-    latest_question_list = Question.objects.filter(pub_date__lte=timezone.now(), id__in=Choice.objects.values_list('question_id').distinct()).order_by('-pub_date')[:5]
+    latest_question_list = Question.objects.filter(pub_date__lte=timezone.now(
+    ), id__in=Choice.objects.values_list('question_id').distinct()).order_by('-pub_date')[:5]
     context = {
         'latest_question_list': latest_question_list,
     }
@@ -17,7 +18,7 @@ def index(request):
 def detail(request, question_id):
     try:
         question = Question.objects.filter(
-            pub_date__lte=timezone.now()).get(id=question_id)
+            pub_date__lte=timezone.now(), id__in=Choice.objects.values_list('question_id').distinct()).get(id=question_id)
     except Question.DoesNotExist:
         raise Http404("Question does not exist")
 
@@ -27,7 +28,7 @@ def detail(request, question_id):
 def results(request, question_id):
     try:
         question = Question.objects.filter(
-            pub_date__lte=timezone.now()).get(id=question_id)
+            pub_date__lte=timezone.now(), id__in=Choice.objects.values_list('question_id').distinct()).get(id=question_id)
     except Question.DoesNotExist:
         raise Http404("Question does not exist")
 

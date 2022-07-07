@@ -153,10 +153,20 @@ class QuestionDetailViewTests(TestCase):
         displays the question's text.
         """
         past_question = create_question(
-            question_text='Past Question.', days=-5)
+            question_text="Past Question.", days=-5)
+        create_choice("My Choice", past_question)
         url = reverse('polls:detail', args=(past_question.id,))
         response = self.client.get(url)
         self.assertContains(response, past_question.question_text)
+
+    def test_question_without_choice(self):
+        """
+        Return 404 when Question has no choice
+        """
+        question = create_question(question_text="Past question 1.", days=-30)
+        url = reverse('polls:detail', args=(question.id,))
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 404)
 
 
 class QuestionResultsViewTests(TestCase):
@@ -179,6 +189,17 @@ class QuestionResultsViewTests(TestCase):
         """
         past_question = create_question(
             question_text='Past Question.', days=-5)
+        create_choice("Choice Text", past_question)
         url = reverse('polls:results', args=(past_question.id,))
         response = self.client.get(url)
         self.assertContains(response, past_question.question_text)
+
+    def test_question_without_choice(self):
+        """
+        Return 404 when Question has no choice
+        """
+        question = create_question(question_text="Past question 1.", days=-30)
+        url = reverse('polls:results', args=(question.id,))
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 404)
+
